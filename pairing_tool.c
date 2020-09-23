@@ -26,6 +26,7 @@
 #define USB_VENDOR_ID_LOGITECH			(__u32)0x046d
 #define USB_DEVICE_ID_UNIFYING_RECEIVER		(__s16)0xc52b
 #define USB_DEVICE_ID_UNIFYING_RECEIVER_2	(__s16)0xc532
+#define USB_DEVICE_ID_G903_RECEIVER (__s16)0xFFFFC539
 
 int main(int argc, char **argv)
 {
@@ -56,7 +57,8 @@ int main(int argc, char **argv)
 		if (info.bustype != BUS_USB ||
 		    info.vendor != USB_VENDOR_ID_LOGITECH ||
 		    (info.product != USB_DEVICE_ID_UNIFYING_RECEIVER &&
-		     info.product != USB_DEVICE_ID_UNIFYING_RECEIVER_2)) {
+		     info.product != USB_DEVICE_ID_UNIFYING_RECEIVER_2 &&
+         info.product != USB_DEVICE_ID_G903_RECEIVER)) {
 			errno = EPERM;
 			perror("The given device is not a Logitech "
 				"Unifying Receiver");
